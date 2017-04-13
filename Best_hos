@@ -1,0 +1,36 @@
+make.power<- function(n){
+        
+        pow<- function(x){
+                
+                x^n
+        }
+        pow
+}
+
+cube<- make.power(3)
+
+
+v<- function(x){
+        j<-   x^2-3*x+3
+        return(j)
+}
+
+
+o<- Sys.time()
+uncla
+
+
+
+
+f <- function(x) {
+        g <- function(y) {
+                y + z
+        }
+        z <- 4
+        x + g(x)
+}
+
+x <- 1:10
+if(x > 5) {
+        x <- 0
+}
