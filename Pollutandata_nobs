@@ -1,0 +1,27 @@
+completed<- function(directory=" ",id){
+        
+        my_frame<- NULL
+        
+        filesvec<- numeric(length = 332)
+        
+        old.dir<- getwd()
+        
+        setwd(directory)
+        
+        filesvec<- list.files()
+        
+        for (i in id) {
+                
+                pollutdata<- read.csv(filesvec[i])
+                
+                good<- complete.cases(pollutdata)
+                
+                pollutdata2<- pollutdata[good,]
+                
+                my_frame<- data.frame(my_frame)
+                my_frame<- rbind(my_frame,c(i,nrow(pollutdata2)))
+                names(my_frame)<- c("id","nobs")
+        }
+        print(my_frame)
+        setwd(old.dir)
+}
