@@ -1,0 +1,41 @@
+
+pollutantmeen<- function(directory= " ",pollutant= " ",id){
+        total<- 0
+        obsv<- 0
+        
+        filesvec<- numeric(length = 332)
+        
+        old.dir<- getwd()
+        
+        setwd(directory)
+        
+        filesvec<- list.files()
+        
+        for (i in id) {
+                
+                pollutdata<- read.csv(filesvec[i])
+                
+                y<- if(pollutant=="nitrate"){
+                        
+                        pollutdata$nitrate
+                }
+                else{
+                        pollutant$sulfate
+                }
+                
+                bad<- is.na(y)
+                y<- y[!bad]
+                #     print(y)
+                total<- total+ sum(y)
+                obsv<- obsv +length(y)   
+        }
+        
+        
+        
+        meen<- total/obsv
+        print(meen)
+        setwd(old.dir)
+}
+
+
+
