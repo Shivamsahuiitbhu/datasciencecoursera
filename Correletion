@@ -1,0 +1,31 @@
+corr<- function(directory= " ",threshold=0){
+        
+        cv<- NULL
+        filesvec<- numeric(length = 332)
+        
+        old.dir<- getwd()
+        
+        setwd(directory)
+        
+        filesvec<- list.files()
+        
+        for (i in 1:332) {
+                
+                pollutdata<- read.csv(filesvec[i])
+                
+                good<- complete.cases(pollutdata)
+                
+                pollutdata2<- pollutdata[good,]
+                
+                nobs<- nrow(pollutdata2)
+                
+                if(nobs>threshold){
+                        cv<- c(cv,cor(pollutdata2$nitrate,pollutdata2$sulfate))
+                        
+                }
+        }
+        
+        return(cv)
+        setwd(old.dir)
+        
+}
